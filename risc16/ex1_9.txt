@@ -13,6 +13,13 @@
 			//b = b + b
 			//shift carry c
 			//end loop
+	
+	sw	0, 0, 0	//Clear the memory for the online check just in case
+	sw	0, 0, 1
+	sw	0, 0, 2
+	sw	0, 0, 3
+	sw	0, 0, 4
+	sw	0, 0, 5
 			
 	add	5, 0, 2
 	add	6, 0, 0
