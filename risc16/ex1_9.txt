@@ -1,6 +1,6 @@
-	movi	1, 0
+	movi	1, 0xa060
 	
-	movi	2, 0
+	movi	2, 0x88dc
 
 			//Reasoning:
 			//Goal: e=a*b
