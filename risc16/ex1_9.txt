@@ -49,10 +49,10 @@ zero: 	addi 	7, 0, 0
 msb2:	movi	1, 0x8000	//Keep msb
 	nand 	1, 5, 1
 	nand 	1, 1, 1
-	beq 	1, 0, add15
+	beq 	1, 0, ad15
 	addi 	7, 7, 1
 
-add15:	movi	1, 0x7FFF	//Keep 15LSBs
+ad15:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	3, 1, 3
 	nand	3, 3, 3
 	nand	5, 1, 5
@@ -62,23 +62,23 @@ add15:	movi	1, 0x7FFF	//Keep 15LSBs
 	movi	1, 0x8000	//Keep msb
 	nand 	1, 3, 1
 	nand 	1, 1, 1
-	beq 	1, 0, addcy1
+	beq 	1, 0, adcy1
 	addi 	7, 7, 1
-	beq	0, 0, addcy1
+	beq	0, 0, adcy1
 
 inter4:	beq	0, 0, loop
 
-addcy1:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
+adcy1:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
 	nand	3, 3, 1
 	nand	3, 3, 3
 	movi	1, 0x0001	//Keep LSB of Cy
 	nand	2, 1, 7
 	nand	2, 2, 2
-	beq	2, 0, addcy2
+	beq	2, 0, adcy2
 	movi	1, 0x8000	//Add MSB=1
 	add	3, 1, 3
 
-addcy2:	movi	1, 0x0002	//Keep 2nd bit of Cy
+adcy2:	movi	1, 0x0002	//Keep 2nd bit of Cy
 	nand	2, 1, 7
 	nand	2, 2, 2
 	beq	2, 0, nocy
@@ -95,15 +95,15 @@ high:	movi	1, 0x8000	//Keep msb
 zeroh: 	addi 	7, 0, 0
 	beq	0, 0, msb2h
 	
-inter1:	beq	0, 0, noadd
+inter1:	beq	0, 0, noad
 
 msb2h:	movi	1, 0x8000	//Keep msb
 	nand 	1, 6, 1
 	nand 	1, 1, 1
-	beq 	1, 0, add15h
+	beq 	1, 0, ad15h
 	addi 	7, 7, 1
 
-add15h:	movi	1, 0x7FFF	//Keep 15LSBs
+ad15h:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	4, 1, 4
 	nand	4, 4, 4
 	nand	6, 1, 6
@@ -133,7 +133,7 @@ adcy1h:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
 storee:	sw	3, 0, 2		//Finished e = e + b. Store results
 	sw	4, 0, 3
 	
-noadd:	lw	5, 0, 4
+noad:	lw	5, 0, 4
 	lw	6, 0, 5	
 
 	add	3, 0, 5		//Move b (5,6) to (3,4) in order to compute b = b + b
@@ -150,10 +150,10 @@ zero_: 	addi 	7, 0, 0
 msb2_:	movi	1, 0x8000	//Keep msb
 	nand 	1, 5, 1
 	nand 	1, 1, 1
-	beq 	1, 0, add15_
+	beq 	1, 0, ad15_
 	addi 	7, 7, 1
 
-add15_:	movi	1, 0x7FFF	//Keep 15LSBs
+ad15_:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	3, 1, 3
 	nand	3, 3, 3
 	nand	5, 1, 5
