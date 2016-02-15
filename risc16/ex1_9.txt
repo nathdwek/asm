@@ -30,13 +30,14 @@
 	add	4, 0, 0
 
 loop:	nand	7, 2, 1
+	nand	7, 7, 7
 	sw	1, 0, 0
 	sw	2, 0, 1
-	nand	7, 7, 7
-	beq	7, 0, inter1
-
+	
 	sw	5, 0, 4
-	sw	6, 0, 5
+	sw	6, 0, 5	
+	
+	beq	7, 0, inter1
 
 	movi	1, 0x8000	//Keep msb
 	nand 	1, 3, 1
@@ -134,7 +135,7 @@ storee:	sw	3, 0, 2		//Finished e = e + b. Store results
 	sw	4, 0, 3
 	
 noad:	lw	5, 0, 4
-	lw	6, 0, 5	
+	lw	6, 0, 5
 
 	add	3, 0, 5		//Move b (5,6) to (3,4) in order to compute b = b + b
 	add	4, 0, 6
