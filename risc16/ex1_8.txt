@@ -1,8 +1,8 @@
-	movi 	3, 0xFFFF
+	movi 	3, 0x88DC
 
 	movi	4, 0
 
-	movi	5, 0xFFFF
+	movi	5, 0x88DC
 
 	movi 	6, 0
 
