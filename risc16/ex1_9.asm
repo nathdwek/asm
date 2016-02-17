@@ -24,6 +24,7 @@ loop:	nand	7, 6, 1
 	sw	1, 0, 1
 
 	beq	7, 0, shftb1	//nth bit of a = 0 => dont do r = r + b
+				//So go to b = b + b
 				//Else do it: here is a 32 + 32 bit addition
 				// [2,5] + [3,4] = [3,4] and keep [2,5] intact
 	movi	1, 0x8000	//Keep MSB
