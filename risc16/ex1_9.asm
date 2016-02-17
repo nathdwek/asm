@@ -1,5 +1,5 @@
 	movi	1, 0xa060
-	
+
 	movi	2, 0x88dc
 
 			//Reasoning:
@@ -11,20 +11,13 @@
 			//e = e + b
 			//}
 			//b = b + b
-			//shift carry c
+			//shift mask c
 			//end loop
-	
-	sw	0, 0, 0	//Clear the memory for the online check just in case
-	sw	0, 0, 1
-	sw	0, 0, 2
-	sw	0, 0, 3
-	sw	0, 0, 4
-	sw	0, 0, 5
-			
+
 	add	5, 0, 2
 	add	6, 0, 0
-	
-	addi	2, 0, 1//Running mask c
+
+	addi	2, 0, 1	//Running mask c
 
 	add	3, 0, 0
 	add	4, 0, 0
@@ -33,10 +26,10 @@ loop:	nand	7, 2, 1
 	nand	7, 7, 7
 	sw	1, 0, 0
 	sw	2, 0, 1
-	
+
 	sw	5, 0, 4
-	sw	6, 0, 5	
-	
+	sw	6, 0, 5
+
 	beq	7, 0, inter1
 
 	movi	1, 0x8000	//Keep msb
@@ -59,7 +52,7 @@ ad15:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	5, 1, 5
 	nand	5, 5, 5
 	add	3, 3, 5		//15bits addition
-	
+
 	movi	1, 0x8000	//Keep msb
 	nand 	1, 3, 1
 	nand 	1, 1, 1
@@ -95,7 +88,7 @@ high:	movi	1, 0x8000	//Keep msb
  	beq 	0, 0, msb2h
 zeroh: 	addi 	7, 0, 0
 	beq	0, 0, msb2h
-	
+
 inter1:	beq	0, 0, noad
 
 msb2h:	movi	1, 0x8000	//Keep msb
@@ -133,7 +126,7 @@ adcy1h:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
 
 storee:	sw	3, 0, 2		//Finished e = e + b. Store results
 	sw	4, 0, 3
-	
+
 noad:	lw	5, 0, 4
 	lw	6, 0, 5
 
@@ -160,7 +153,7 @@ ad15_:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	5, 1, 5
 	nand	5, 5, 5
 	add	3, 3, 5		//15bits addition
-	
+
 	movi	1, 0x8000	//Keep msb
 	nand 	1, 3, 1
 	nand 	1, 1, 1
@@ -228,7 +221,7 @@ adc1h_:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
 
 storeb:	add	5, 3, 0
 	add	6, 4, 0
-	
+
 	lw	1, 0, 0
 
 	lw	3, 0, 2
