@@ -64,7 +64,7 @@ adcy1:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum
 	nand	1, 1, 7
 	nand	1, 1, 1
 	beq	1, 0, adcy2	//LSB of Cy is 0 go look MSB of carry.
-	movi	1, 0x8000	//Else add MSB = 1 to result of 15bits addition
+	lui	1, 512		//Else add MSB = 1 to result of 15bits addition
 	add	3, 1, 3
 
 adcy2:	addi	1, 0, 2		//Keep 2nd bit of Cy
