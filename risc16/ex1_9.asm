@@ -91,7 +91,7 @@ nmsbh: 	addi 	7, 0, 0
 
 shftb1:	beq	0, 0, shftb
 
-msb2h:	movi	1, 0x8000	//Keep msb
+msb2h:	lui	1, 512		//Keep msb
 	nand 	1, 4, 1
 	nand 	1, 1, 1
 	beq 	1, 0, ad15h
