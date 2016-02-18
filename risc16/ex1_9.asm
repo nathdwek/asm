@@ -124,15 +124,15 @@ adcy1h:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum of the high bits
 	movi	1, 0x8000	//Add MSB=1 to high bits of result
 	add	4, 1, 4
 
-shftb:	movi	1, 0x8000
+shftb:	addi	7, 0, 0
+	beq	2, 0, shfth
+	movi	1, 0x8000
 	nand 	1, 2, 1
 	nand 	1, 1, 1
-	beq 	1, 0, shft0
+	beq 	1, 0, shftl
 	addi 	7, 0, 1
- 	beq 	0, 0, shift
-shft0: 	addi 	7, 0, 0
-shift:  add     2, 2, 2
-	add     5, 5, 5
+shftl:  add     2, 2, 2
+shfth:	add     5, 5, 5
 	add     5, 5, 7
 
 	lw	1, 0, 1
