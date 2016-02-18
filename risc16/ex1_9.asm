@@ -27,7 +27,7 @@ loop:	nand	7, 6, 1
 				//So go to b = b + b
 				//Else do it: here is a 32 + 32 bit addition
 				// [2,5] + [3,4] = [3,4] and keep [2,5] intact
-	movi	1, 0x8000	//Keep MSB
+	lui	1, 512		//Keep MSB
 	nand 	6, 2, 1
 	nand 	6, 6, 6
 	beq 	6, 0, nomsb 	//First MSB is 0 initialize carry to 0
@@ -48,7 +48,7 @@ ad15:	movi	1, 0x7FFF	//Keep 15LSBs
 	nand	3, 3, 3
 	add	3, 3, 6		//15bits addition
 
-	movi	1, 0x8000	//Keep msb of result
+	lui	1, 512		//Keep msb of result
 	nand 	1, 3, 1
 	nand 	1, 1, 1
 	beq 	1, 0, adcy1	//MSB of result = 0 go to add LSB of carry to result
@@ -105,7 +105,7 @@ ad15h:	movi	1, 0x7FFF	//Keep 15LSBs
 	add	4, 4, 6		//high 15 bits of first operand + carry
 	add	4, 4, 1		//+high 15bits of second operand
 
-	movi	1, 0x8000	//Keep msb
+	lui	1, 512		//Keep msb
 	nand 	1, 4, 1
 	nand 	1, 1, 1
 	beq 	1, 0, adcy1h
@@ -121,12 +121,12 @@ adcy1h:	movi	1, 0x7FFF	//Keep 15LSBs of 15 bits sum of the high bits
 	nand	6, 1, 7
 	nand	6, 6, 6
 	beq	6, 0, shftb
-	movi	1, 0x8000	//Add MSB=1 to high bits of result
+	lui	1, 512		//Add MSB=1 to high bits of result
 	add	4, 1, 4
 
 shftb:	addi	7, 0, 0
 	beq	2, 0, shfth
-	movi	1, 0x8000
+	lui	1, 512
 	nand 	1, 2, 1
 	nand 	1, 1, 1
 	beq 	1, 0, shftl
