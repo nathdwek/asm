@@ -79,7 +79,7 @@ adcy2:	addi	1, 0, 2		//Keep 2nd bit of Cy
 	beq	0, 0, high	//Go to high bits addition
 nocy:	addi	6, 0, 0
 
-high:	movi	1, 0x8000	//Keep msb
+high:	lui	1, 512		//Keep msb
 	nand 	1, 5, 1		//From here on its the same structure as the
 				//The previous addition (same labels suffixed by h)
 	nand 	1, 1, 1
