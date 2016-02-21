@@ -6,7 +6,7 @@
 
 	movi 	6, 0
 
-	lui	1, 512		//Keep msb of 3 in 7
+	lui	1, 512		//Keep msb of r3 in r7
 	nand 	2, 3, 1
 	nand 	2, 2, 2
 	beq 	2, 0, zero1
@@ -14,7 +14,7 @@
  	beq 	0, 0, msb2
 zero1: 	addi 	7, 0, 0
 
-msb2:	nand 	2, 5, 1		//Keep msb of 5 in 2
+msb2:	nand 	2, 5, 1		//Keep msb of r5 in r2
 	nand 	2, 2, 2
 	beq 	2, 0, zero2
 	addi 	2, 0, 1
