@@ -57,21 +57,21 @@ cyl:	addi	4, 4, 1		//There's a Cy from Low to High addition
 
 adh:	add	4, 4, 5		//Else go straight to High addition
 
-shftb:	nand 	1, 2, 1
-	nand 	1, 1, 1
-	beq 	1, 0, shft0
-	addi 	7, 0, 1
+shftb:	nand 	1, 2, 1		//A simple shift
+	nand 	1, 1, 1		//Keep the MSB of r2 in r1
+	beq 	1, 0, shft0	//If it's zero, we shift a zero (so we actually do nothing)
+	addi 	7, 0, 1		//Else we shift a one
  	beq 	0, 0, shift
 shft0: 	addi 	7, 0, 0
 shift:  add     2, 2, 2
 	add     5, 5, 5
 	add     5, 5, 7
+				//Prepare for the next iteration of the loop.
+	lw	1, 0, 1		//Load a in r1
 
-	lw	1, 0, 1
-
-	lw	6, 0, 0
-	add	6, 6, 6
-	beq	6, 0, finish
-	beq	0, 0, loop
+	lw	6, 0, 0		//Load the running mask in r6
+	add	6, 6, 6		//Shift it
+	beq	6, 0, finish	//If it's zero, we iterated 16 times, so we're done
+	beq	0, 0, loop	//Else, we be loopin'!
 
 finish:	halt
