@@ -22,15 +22,15 @@ msb2:	nand 	2, 5, 1		//Keep msb of 5 in 2
 zero2:	addi	2, 0, 0
 
 adl:	add	3, 3, 5		//16bits addition of the LSBs
-	beq	7, 2, same	//LSBs registers had the same MSB
-	nand	1, 3, 1		//LSBs registers didn't have the same MSB
+	beq	7, 2, same	//If the LSBs register have the same MSB
+	nand	1, 3, 1		//Else, look at the MSB of the 16bits sum
 	nand	1, 1, 1
-	beq	1, 0, cyl
-	beq	0, 0, adh
+	beq	1, 0, cyl	//If it's 0, there's a Cy from the Low addition
+	beq	0, 0, adh	//Else go straight to High addition
 
-same:	beq	0, 2, adh	//LSBs registers had the same MSB
+same:	beq	0, 2, adh	//If both LSBs register's MSBs were 1
 
-cyl:	addi	4, 4, 1
+cyl:	addi	4, 4, 1		//There's a Cy from Low to High addition
 
-adh:	add	4, 4, 6
+adh:	add	4, 4, 6		//Else go straight to High addition
 	halt
