@@ -23,7 +23,7 @@ loop:	nand	7, 6, 1
 	sw	6, 0, 0
 	sw	1, 0, 1
 
-	lui	1, 512		//This is a mask for the MSB that we often use
+	lui	1, 32768	//This is a mask for the MSB that we often use
 
 	beq	7, 0, shftb	//nth bit of a = 0 => dont do r = r + b
 				//So go to b = b + b

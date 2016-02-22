@@ -6,7 +6,7 @@
 
 	movi 	6, 0
 
-	lui	1, 512		//Keep msb of r3 in r7
+	lui	1, 32768	//Keep msb of r3 in r7
 	nand 	2, 3, 1
 	nand 	2, 2, 2
 	beq 	2, 0, zero1
