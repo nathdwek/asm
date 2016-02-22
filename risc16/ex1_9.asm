@@ -14,7 +14,7 @@
 //shift mask c
 //end loop
 
-//b [2,5] and r [3,4] (spec) are always in registers!
+//b [r2,r5] and r [r3,r4] (spec) are always in registers!
 
 	addi	6, 0, 1		//Running mask c
 
@@ -28,7 +28,7 @@ loop:	nand	7, 6, 1
 	beq	7, 0, shftb	//nth bit of a = 0 => dont do r = r + b
 				//So go to b = b + b
 				//Else do it: here is a 32 + 32 bit addition
-				// [2,5] + [3,4] = [3,4] and keep [2,5] intact
+				// [r2,r5] + [r3,r4] = [r3,r4] and keep [r2,r5] intact
 
 	nand 	6, 2, 1		//Keep MSB of r2 in r7
 	nand 	6, 6, 6
