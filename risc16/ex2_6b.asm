@@ -1,24 +1,33 @@
-	movi 1, 0x00ff
-	
-	movi 2, 0x00ff
-	
-	addi 5, 0, 1 // mask avoiding useless additions
-	addi 7, 0, 1 // initiate positive cst for shift left
-	sw   1, 0, 0
-loop:	lw   1, 0, 0
-	and  6, 1, 5 // mask r1 
-	lw   1, 0, 1
-	beq  6, 0, skip // if masked r1 is 0, skip addition
-	add  3, 3, 2, carry //addition
-	beq  0, 0, skip
-carry:	addi 4, 4, 1 // in case of overflow, carry in r4
-skip:	shl  2, 2, 7, ovrflo // shift 1 left r2
-	beq  0, 0, next
-ovrflo:   	addi 1, 1, 1
-	sw   1, 0, 1
-	beq  6, 0, next
-	add  4, 4, 1
-next:	shl  5, 5, 7 // shift 1 left r5
-	beq  5, 0, halt
-	beq  0, 0, loop
+	movi	1, 0x00ff
+
+	movi	2, 0x00ff
+
+//c [r3, r4] = a [r1] * b [r2]
+//Same reasoning as 1.9 (c=c+b iff nth bit of a=1, b=b+b, loop 16 times)
+//Because we do b=b+b, b is going to take up to 32bits. We choose to place the
+//MSBs in r5
+
+	addi	6, 0, 1 		//Running mask
+
+loop:	and	7, 1, 6			 //See if addition is needed
+	beq	7, 0, shftb		 // if masked r1 is 0, skip addition
+
+	add	3, 3, 2, carry 		//c [r3, r4] = c + b [r2, r5]
+	add	7, 0, 0
+	beq	0, 0, adh
+carry:	addi	7, 0, 1 		//In case of overflow, remember cy in r6
+adh:	add	4, 4, 5
+	add	4, 4, 7
+
+shftb:	add	2, 2, 2, shft1		//b [r2, r5] = b + b
+	addi	7, 0, 0
+	beq	0, 0, shftbh
+shft1: 	addi	7, 0, 1
+shftbh:	add	5, 5, 5
+	add	5, 5, 7
+
+	add	6, 6, 6, halt		//Shift the running mask. Overflow
+					//means we looped 16 times so stop
+					//in that case
+	beq	0, 0, loop
 halt:	halt
