@@ -13,7 +13,7 @@ loop:	and	7, 1, 6			 //See if addition is needed
 	beq	7, 0, pre		 // if masked r1 is 0, skip addition
 
 	add	3, 3, 2, carry 		//c [r3, r4] = c + b [r2, r5]
-	add	7, 0, 0
+	addi	7, 0, 0
 	beq	0, 0, adh
 carry:	addi	7, 0, 1 		//In case of overflow, remember cy in r6
 adh:	add	4, 4, 5
