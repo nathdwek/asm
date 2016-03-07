@@ -41,6 +41,10 @@
 //	0xdcc0	0xd931	0
 //	0x8fcd	0xadfa	1
 //	0x6b21	0x265c	0
+
+//REASONING
+//If r1 and r2 have the same sign: iff r1-r2 is of different sign then r1<r2
+//If r1 and r2 have different signs: iff r2 is positive then r1>r2
 	movi	1, 0x7FFF
 	
 	movi	2, 0x8000
