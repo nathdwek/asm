@@ -1,8 +1,8 @@
-//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
-
 	movi	1, 0x00ff
 
 	movi	2, 0x00ff
+
+//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
 
 //c [r3, r4] = a [r1] * b [r2]
 //Same reasoning as 1.9 (c=c+b iff nth bit of a=1, b=b+b, loop 16 times)

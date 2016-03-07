@@ -1,9 +1,8 @@
-//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
-
         movi    1, 0
 
         movi    2, 0
 
+//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
         mul     3, 1, 2
         addi    4, 2, 0
         halt
