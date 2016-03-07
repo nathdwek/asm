@@ -1,3 +1,5 @@
+//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
+
 //Check if r1 is strictly smaller than r2 (r3 = r1 < r2)
 //r3 is 1 if true, else 0
 //TEST VECTORS

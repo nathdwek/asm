@@ -1,3 +1,5 @@
+//Gauthier Duchene -- Nathan Dwek -- Jason Rosa
+
 	movi	1, 0x00ff
 
 	movi	2, 0x00ff
