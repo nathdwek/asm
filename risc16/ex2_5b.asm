@@ -1,3 +1,4 @@
+//Check if r1 is strictly smaller than r2 (r3 = r1 < r2)
 	movi	1, 0
 
 	movi	2, 10

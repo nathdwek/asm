@@ -1,4 +1,4 @@
-//Check if 1 is strictly smaller than 2
+//Check if r1 is strictly smaller than r2 (r3 = r1 < r2)
 //r3 is 1 if true, else 0
 //TEST VECTORS
 //	op1	op2	expected output
